@@ -5,9 +5,34 @@
   "devDependencies": {
     "glob": "^6.0.4",
     "grunt": "~0.4.5",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-nodeunit": "~0.4.1",
-    "grunt-contrib-watch": "~0.6.1",
     "solc": "^0.1.6"
-  }
+  },
+  "name": "grunt-solc",
+  "description": "> Compile contracts and (optionally) save output to file",
+  "version": "0.1.0",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "glob": "^6.0.4",
+    "grunt": "^0.4.5",
+    "solc": "^0.2.0-1"
+  },
+  "scripts": {
+    "test": "grunt solc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SafeMarket/grunt-solc.git"
+  },
+  "keywords": [
+    "grunt",
+    "solc",
+    "ethereum",
+    "solidity"
+  ],
+  "author": "Aakil Fernandes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SafeMarket/grunt-solc/issues"
+  },
+  "homepage": "https://github.com/SafeMarket/grunt-solc#readme"
 }
