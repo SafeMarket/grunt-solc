@@ -17,7 +17,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-solc');
 ```
 
-## The "solcadd" task
+## The "solc" task
 
 Add a file to solc
 
