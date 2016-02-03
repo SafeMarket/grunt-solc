@@ -27,7 +27,8 @@ grunt.initConfig({
     default:{
       options: {
         files:['contracts/*']
-        ,output:'output.json'     //optional
+        ,output:'output.json'   //optional
+        ,doOptimize: true 		//optional
       }
     }
   },

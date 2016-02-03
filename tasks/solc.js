@@ -6,7 +6,9 @@ module.exports = function(grunt){
 
 	grunt.registerMultiTask('solc', 'Compile solidity contracts', function() {
 
-		var options = this.options()
+	var options = this.options({
+		doOptimize: true
+	})
 
     if(!Array.isArray(options.files) || options.files.length === 0){
     	grunt.log.error('options.files should be an array of files')
@@ -24,7 +26,7 @@ module.exports = function(grunt){
     var solidityCode = files.map(function(file){
     		return fs.readFileSync(file)
     	}).join('\r\n\r\n')
-    	,solcOutput = solc.compile(solidityCode,1)
+    	,solcOutput = solc.compile(solidityCode,doOptimize?1:0)
 
     if(solcOutput.errors && solcOutput.errors.length>0){
 			solcOutput.errors.forEach(function(err){
