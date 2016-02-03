@@ -26,7 +26,7 @@ module.exports = function(grunt){
     var solidityCode = files.map(function(file){
     		return fs.readFileSync(file)
     	}).join('\r\n\r\n')
-    	,solcOutput = solc.compile(solidityCode,doOptimize?1:0)
+    	,solcOutput = solc.compile(solidityCode,options.doOptimize?1:0)
 
     if(solcOutput.errors && solcOutput.errors.length>0){
 			solcOutput.errors.forEach(function(err){
