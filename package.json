@@ -14,7 +14,7 @@
   "dependencies": {
     "glob": "^6.0.4",
     "grunt": "^0.4.5",
-    "solc": "^0.2.0-1"
+    "solc": "git+https://github.com/SafeMarket/browser-solidity.git#use-compiler"
   },
   "scripts": {
     "test": "grunt solc"

@@ -2,17 +2,23 @@ module.exports = function(grunt){
 	
 	var solc = require('solc')
 		,glob = require('glob')
+		,path = require('path')
 
 	grunt.registerMultiTask('solc', 'Compile solidity contracts', function() {
 
 	var options = this.options({
 		doOptimize: true
+		,compilerPath:null
 	})
 
     if(!Array.isArray(options.files) || options.files.length === 0){
     	grunt.log.error('options.files should be an array of files')
     	return false
     }
+
+    if(options.compilerPath)
+    	solc.useCompilerPath(path.resolve(options.compilerPath))
+
 
     var files = []
 

@@ -9,10 +9,11 @@ module.exports = function(grunt) {
         options:{
           files:['contracts/*']
           ,output:'output.json'
+          ,compilerPath:'./bin/soljson-v0.1.6-2015-11-16-c881d10.js'
+          ,doOptimize:false
         }
       }
     }
   })
-
 
 };
