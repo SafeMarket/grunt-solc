@@ -1,7 +1,6 @@
 module.exports = function(grunt){
 	
-	var fs = require('fs')
-		,solc = require('solc')
+	var solc = require('solc')
 		,glob = require('glob')
 
 	grunt.registerMultiTask('solc', 'Compile solidity contracts', function() {
@@ -24,7 +23,7 @@ module.exports = function(grunt){
     })
 
     var solidityCode = files.map(function(file){
-    		return fs.readFileSync(file)
+    		return grunt.file.read(file)
     	}).join('\r\n\r\n')
     	,solcOutput = solc.compile(solidityCode,options.doOptimize?1:0)
 
@@ -41,7 +40,7 @@ module.exports = function(grunt){
 			}
 
 			if(options.output){
-				fs.writeFileSync(options.output,JSON.stringify(solcOutput))
+				grunt.file.write(options.output,JSON.stringify(solcOutput))
 				grunt.log.success('Saved output to '+options.output)
 			}
 		}
