@@ -37,11 +37,6 @@ module.exports = function(grunt){
 
     var solcOutput = solc.compile({ sources: sources }, options.doOptimize ? 1 : 0 )
 
-    var solidityCode = files.map(function(file){
-    		return grunt.file.read(file)
-    	}).join('\r\n\r\n')
-    	,solcOutput = solc.compile(solidityCode,options.doOptimize?1:0)
-
     if(solcOutput.errors && solcOutput.errors.length>0){
 			solcOutput.errors.forEach(function(err){
 				grunt.log.error(err)
