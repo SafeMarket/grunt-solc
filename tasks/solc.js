@@ -23,10 +23,19 @@ module.exports = function(grunt){
     var files = []
 
     options.files.forEach(function(globPath){
-    	glob.sync(globPath).forEach(function(file){
-    		files.push(file)
-    	})
+      glob.sync(globPath).forEach(function(file){
+        files.push(file)
+      })
     })
+
+    var sources = {}
+    
+    files.forEach(function(file){
+      var fileName = file.split('/').slice(-1)[0]
+      sources[fileName] = grunt.file.read(file)
+    })
+
+    var solcOutput = solc.compile({ sources: sources }, options.doOptimize ? 1 : 0 )
 
     var solidityCode = files.map(function(file){
     		return grunt.file.read(file)
