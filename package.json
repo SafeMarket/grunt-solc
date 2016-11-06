@@ -9,7 +9,7 @@
   },
   "name": "grunt-solc",
   "description": "> Compile contracts and (optionally) save output to file",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "main": "Gruntfile.js",
   "dependencies": {
     "glob": "^6.0.4",
