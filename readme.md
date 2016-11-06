@@ -26,9 +26,10 @@ grunt.initConfig({
   solc: {
     default:{
       options: {
-        files:['contracts/*']
-        ,output:'output.json'   //optional
-        ,doOptimize: true 		//optional
+        files:['contracts/*'],
+        solc: solc
+        output:'output.json',   //optional
+        doOptimize: true, 		//optional
       }
     }
   },

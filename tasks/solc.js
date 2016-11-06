@@ -1,24 +1,23 @@
 module.exports = function(grunt){
 	
-	var solc = require('solc')
-		,glob = require('glob')
-		,path = require('path')
+	const glob = require('glob')
+  const path = require('path')
 
 	grunt.registerMultiTask('solc', 'Compile solidity contracts', function() {
 
-	var options = this.options({
-		doOptimize: true
-		,compilerPath:null
-	})
+  	var options = this.options({
+  		doOptimize: true
+  	})
 
     if(!Array.isArray(options.files) || options.files.length === 0){
     	grunt.log.error('options.files should be an array of files')
     	return false
     }
 
-    if(options.compilerPath)
-    	solc.useCompilerPath(path.resolve(options.compilerPath))
-
+    if(! options.solc ){
+      grunt.log.error('options.solc should be a solc instance')
+      return false
+    }
 
     var files = []
 
@@ -35,7 +34,7 @@ module.exports = function(grunt){
       sources[fileName] = grunt.file.read(file)
     })
 
-    var solcOutput = solc.compile({ sources: sources }, options.doOptimize ? 1 : 0 )
+    var solcOutput = options.solc.compile({ sources: sources }, options.doOptimize ? 1 : 0 )
 
     if(solcOutput.errors && solcOutput.errors.length>0){
 			solcOutput.errors.forEach(function(err){
